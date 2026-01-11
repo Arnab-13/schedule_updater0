@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Testing Suite | Professional Development Tools</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="webhook-tester">
+        <header class="webhook-tester__header">
+            <h1 class="webhook-tester__title">Webhook Testing Suite</h1>
+            <p class="webhook-tester__subtitle">Test and validate your n8n workflow integrations</p>
+        </header>
+
+        <section class="webhook-tester__card">
+            <aside class="instructions-panel">
+                <h2 class="instructions-panel__title">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 14V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 6H10.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Quick Start Guide
+                </h2>
+                <ol class="instructions-panel__list">
+                    <li class="instructions-panel__item">Copy your webhook URL from your n8n workflow</li>
+                    <li class="instructions-panel__item">Paste the URL into the webhook field below</li>
+                    <li class="instructions-panel__item">Configure your test data parameters</li>
+                    <li class="instructions-panel__item">Submit the request to trigger your workflow</li>
+                    <li class="instructions-panel__item">Monitor your n8n dashboard for successful execution</li>
+                </ol>
+            </aside>
+
+            <form id="webhookTestForm" class="webhook-form" novalidate>
+                <div class="form-field">
+                    <label for="webhookUrl" class="form-field__label">Webhook URL</label>
+                    <input 
+                        type="url" 
+                        id="webhookUrl" 
+                        class="form-field__input"
+                        placeholder="https://your-n8n-instance.com/webhook/..." 
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label for="classId" class="form-field__label">Class Identifier</label>
+                    <input 
+                        type="text" 
+                        id="classId" 
+                        class="form-field__input"
+                        value="CS101" 
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label for="action" class="form-field__label">Action Type</label>
+                    <select 
+                        id="action" 
+                        class="form-field__select"
+                        required
+                        aria-required="true"
+                    >
+                        <option value="Canceled">Cancel Class</option>
+                        <option value="Rescheduled">Reschedule Class</option>
+                        <option value="Room_Changed">Change Room</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="subject" class="form-field__label">Subject</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        class="form-field__input"
+                        value="Computer Science" 
+                        required
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label for="reason" class="form-field__label">Reason (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="reason" 
+                        class="form-field__input"
+                        value="Teacher unavailable" 
+                        placeholder="Provide context for the change"
+                    >
+                </div>
+
+                <button type="submit" class="submit-button">Send Test Request</button>
+            </form>
+
+            <div id="resultPanel" class="result-panel" role="alert" aria-live="polite">
+                <div id="resultContent" class="result-panel__content"></div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="schedule.js"></script>
+</body>
+</html>
